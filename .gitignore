@@ -1,0 +1,35 @@
+# Obsidian 워크스페이스 (개인 레이아웃 - 공유 불필요)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Obsidian 캐시
+.obsidian/cache
+.obsidian/graph-analysis-cache.json
+
+# 플러그인 캐시 및 임시 파일
+.obsidian/plugins/*/node_modules/
+
+# Obsidian 동기화 파일
+.obsidian/sync.json
+
+# 로컬 휴지통
+.trash/
+
+# OS 메타데이터
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 환경 파일
+.env
+
+# Claude Code 로컬 설정 (MCP 토큰 등 포함 가능)
+.claude/settings.local.json
+.claude/worktrees/
+
+# MCP 설정 파일 (API 키 포함 가능)
+.mcp.json
+
+# Cursor 개인 설정
+.cursor/settings.json
+# .cursor/rules/ 와 .cursor/skills/ 는 공유 대상이므로 추적
