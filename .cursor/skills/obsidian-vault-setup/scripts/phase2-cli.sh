@@ -51,8 +51,8 @@ install_plugin() {
     local plugin_id="$1"
     local plugin_name="$2"
 
-    # 이미 설치된 경우 건너뜀
-    if obsidian plugins:enabled 2>/dev/null | grep -q "\"$plugin_id\""; then
+    # 이미 설치된 경우 건너뜀 (-F: 고정 문자열, 출력 형식(JSON/plaintext) 무관하게 동작)
+    if obsidian plugins:enabled 2>/dev/null | grep -qF "$plugin_id"; then
         echo -e "${YELLOW}⏭️  건너뜀 (이미 설치됨): $plugin_name${NC}"
         ((SKIPPED++)) || true
         return
