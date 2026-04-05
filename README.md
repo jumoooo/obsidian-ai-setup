@@ -1,3 +1,9 @@
+<div align="right">
+
+**English** | [한국어](README.ko.md)
+
+</div>
+
 # 🧠 Obsidian AI Auto-Setup
 
 > **Set up your Obsidian vault in minutes — just talk to an AI agent.**
@@ -40,25 +46,26 @@ The agent **talks to you first**, explains everything in plain language, and onl
 
 ```bash
 # Clone this repo
-git clone https://github.com/your-username/obsidian_ai_setup.git
+git clone https://github.com/jumoooo/obsidian-ai-setup.git
 
-# Copy the setup files to your vault root
-cp -r obsidian_ai_setup/.cursor   /path/to/your/vault/
-cp -r obsidian_ai_setup/.claude   /path/to/your/vault/
+# Copy the setup files into your vault root
+cp -r obsidian-ai-setup/.cursor   /path/to/your-vault/
+cp -r obsidian-ai-setup/.claude   /path/to/your-vault/
 ```
 
-Or just drag the `.cursor/` and `.claude/` folders into your vault in File Explorer.
+Or simply drag the `.cursor/` and `.claude/` folders into your vault in File Explorer.
 
 ### Step 2 — Configure your vault snapshot (optional)
 
 Copy and edit the example config:
 
 ```bash
+cd /path/to/your-vault
 cp .cursor/skills/obsidian-vault-setup/vault-snapshot.example.md \
    .cursor/skills/obsidian-vault-setup/vault-snapshot.md
 ```
 
-Edit `vault-snapshot.md` to match your vault's name, folder structure, and preferred settings.
+Edit `vault-snapshot.md` to match your vault name, folder structure, and preferred settings.
 If you skip this step, the agent will use sensible defaults.
 
 ### Step 3 — Open your vault in Cursor or Claude Code
@@ -133,8 +140,9 @@ You say cancel → Stop immediately
 ## 📁 File Structure
 
 ```
-obsidian_ai_setup/                      ← clone this repo
+obsidian-ai-setup/                      ← clone this repo
 ├── README.md
+├── README.ko.md
 ├── .gitignore
 ├── .cursor/
 │   ├── rules/
@@ -153,16 +161,16 @@ obsidian_ai_setup/                      ← clone this repo
         └── vault-setup.md              ← Claude Code entry point
 ```
 
-### Copy to your vault → gets this layout
+### After copying to your vault
 
 ```
 your-vault/
-├── .cursor/         ← copy from this repo
+├── .cursor/              ← copied from this repo
 │   ├── rules/
 │   └── skills/
 │       └── obsidian-vault-setup/
 │           └── vault-snapshot.md   ← your personal config (from example)
-├── .claude/         ← copy from this repo
+├── .claude/              ← copied from this repo
 │   └── commands/
 └── ... your notes ...
 ```
@@ -190,13 +198,13 @@ This file is the **single source of truth** for your vault's target configuratio
 Each vault gets its own `vault-snapshot.md`. Everything else stays the same:
 
 ```bash
-# Vault A — work notes
+# Work vault
 cp vault-snapshot.example.md work-vault/.cursor/skills/obsidian-vault-setup/vault-snapshot.md
-# edit to match work vault settings
+# edit to match work vault
 
-# Vault B — personal notes
+# Personal vault
 cp vault-snapshot.example.md personal-vault/.cursor/skills/obsidian-vault-setup/vault-snapshot.md
-# edit to match personal vault settings
+# edit to match personal vault
 ```
 
 ---
@@ -208,7 +216,7 @@ cp vault-snapshot.example.md personal-vault/.cursor/skills/obsidian-vault-setup/
 | Skill activation | Automatic (keyword detection) | `/project:vault-setup` |
 | Multiple choice UI | `AskQuestion` tool | Numbered list |
 | Plan confirmation | Plan mode style | Inline confirmation |
-| Both work the same? | ✅ Same `SETUP-GUIDE.md` | ✅ Same `SETUP-GUIDE.md` |
+| Shared logic | ✅ Same `SETUP-GUIDE.md` | ✅ Same `SETUP-GUIDE.md` |
 
 ---
 
@@ -225,24 +233,23 @@ The agent always does the least amount of work necessary. Already-installed plug
 
 ---
 
-## 📝 Phase 1 Script (Windows)
+## 📝 Running Scripts Manually
 
+**Phase 1** — Restore config files (Windows):
 ```bash
-# Run manually if needed
 powershell -ExecutionPolicy Bypass \
   -File ".cursor/skills/obsidian-vault-setup/scripts/phase1-config.ps1" \
-  -VaultPath "path/to/your/vault"
+  -VaultPath "path/to/your-vault"
 ```
 
-## 📝 Phase 2 Script (CLI)
-
+**Phase 2** — Install plugins via CLI:
 ```bash
 # Install specific categories
-.cursor/skills/obsidian-vault-setup/scripts/phase2-cli.sh \
+bash .cursor/skills/obsidian-vault-setup/scripts/phase2-cli.sh \
   --essential --cat-a --cat-b --theme-things
 
 # Install everything
-.cursor/skills/obsidian-vault-setup/scripts/phase2-cli.sh --all
+bash .cursor/skills/obsidian-vault-setup/scripts/phase2-cli.sh --all
 ```
 
 ---
@@ -252,11 +259,10 @@ powershell -ExecutionPolicy Bypass \
 | File | Language |
 |---|---|
 | README.md | English |
+| README.ko.md | 한국어 |
 | SETUP-GUIDE.md | Korean (AI-facing instructions) |
 | plugin-catalog.md | Korean (with English plugin names) |
 | Scripts | Korean comments, English code |
-
-Korean-language version of this README: see [README.ko.md](README.ko.md) _(coming soon)_
 
 ---
 
@@ -266,7 +272,7 @@ PRs welcome! Especially for:
 
 - Adding new plugin categories
 - macOS / Linux support for Phase 1 script
-- More theme options in the catalog
+- More theme options
 - Translation improvements
 
 ---
