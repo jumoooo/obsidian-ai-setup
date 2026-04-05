@@ -1,13 +1,11 @@
-# 텍스트 파일 — 플랫폼에 맞는 줄바꿈 자동 처리
+# 크로스 플랫폼 줄바꿈 처리
 * text=auto
 
-# 쉘 스크립트는 항상 LF (macOS/Linux 호환)
+# 스크립트는 LF 강제 (Windows에서 clone해도 bash 실행 가능)
 *.sh text eol=lf
 
-# PowerShell 스크립트는 CRLF (Windows 호환)
+# PowerShell은 CRLF 허용
 *.ps1 text eol=crlf
 
-# 마크다운, JSON, mdc — 플랫폼 무관
+# 마크다운은 LF
 *.md text eol=lf
-*.mdc text eol=lf
-*.json text eol=lf

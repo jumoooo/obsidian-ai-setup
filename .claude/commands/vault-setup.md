@@ -10,12 +10,13 @@ Obsidian vault를 표준 설정으로 자동 셋업합니다.
 1. `.cursor/skills/obsidian-vault-setup/SETUP-GUIDE.md` — 전체 실행 순서 (핵심)
 2. `.cursor/skills/obsidian-vault-setup/plugin-catalog.md` — 플러그인 카탈로그
 3. `.cursor/skills/obsidian-vault-setup/vault-snapshot.md` — 이 vault 설정값
+   - 없으면 `.cursor/skills/obsidian-vault-setup/vault-snapshot.example.md` 사용
 
 ## Claude Code 전용 UX 지침
 
-### 객관식 선택 제시 방법
+### 객관식 선택지 제시
 
-Step 3과 Step 4에서는 번호 선택지를 명확하게 제시합니다:
+Step 3 (테마)과 Step 4 (카테고리)에서 번호 선택지를 명확하게 제시하세요:
 
 ```
 어떤 기능 패키지가 필요하세요?
@@ -29,8 +30,6 @@ Step 3과 Step 4에서는 번호 선택지를 명확하게 제시합니다:
 6. 🤖 AI/개발자 — Claude AI 연동, 베타 플러그인
 0. 기본 필수만 설치 (선택 없음)
 ```
-
-사용자 응답을 받은 후 Step 5 최종 컨펌으로 넘어갑니다.
 
 ## 인수
 

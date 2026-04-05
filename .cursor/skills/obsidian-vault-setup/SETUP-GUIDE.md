@@ -2,6 +2,8 @@
 
 > **AI-Agnostic 공통 지침** — Cursor와 Claude Code 모두 이 파일을 참조합니다.
 > 모든 단계를 순서대로 따르고, 이상이 있으면 즉시 중단 후 사용자에게 물어보세요.
+>
+> **vault-snapshot.md 우선순위**: `vault-snapshot.md` → 없으면 `vault-snapshot.example.md` 사용
 
 ---
 

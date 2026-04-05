@@ -1,25 +1,44 @@
 ---
-description: Obsidian vault 운영 규칙. 이 vault에서 작업할 때 항상 적용됩니다. PARA+ZK 철학, 파일 작성 규칙, Obsidian CLI 사용 방법을 정의합니다.
+description: Obsidian vault 운영 규칙. 이 vault에서 작업할 때 항상 적용됩니다. Obsidian CLI 사용 방법, 파일 작성 규칙, 자동 셋업 시스템 참조 방법을 정의합니다.
 alwaysApply: true
 ---
 
 # Obsidian Vault 운영 규칙
 
-## 운영 철학
+## Obsidian CLI 핵심 규칙
 
-이 vault는 **PARA + Zettelkasten** 혼합 방식으로 운영됩니다.
+### ⚠️ 코드블록 content= 제한
 
-- `1. Projects/`, `2. Areas/` — 시간 기반 실행 (마감·책임)
-- `5. Zettelkasten/` — 시간 독립적 영구 지식
+`obsidian create content="..."` 파라미터에 백틱(` ``` `)이 포함되면 bash 오류 발생.
 
-**핵심 원칙 3가지**:
-1. **복사 금지** — 항상 `[[링크]]` / `![[임베드]]` 로 참조
-2. **원자적 노트** — Permanent Note 하나에 아이디어 하나
-3. **연결 강제** — 새 Permanent Note는 기존 노트 최소 2개와 연결
+```bash
+# ❌ 실패
+obsidian create path="note.md" content="# 제목\n\`\`\`bash\necho hi\n\`\`\`"
 
-## 파일 작성 규칙
+# ✅ 정답: Write Tool로 파일 직접 작성
+# Obsidian file watcher가 자동으로 감지·인덱싱합니다
+```
 
-### Frontmatter 필수
+### CLI 기본 패턴
+
+```bash
+# 읽기
+obsidian read path="folder/note.md"
+obsidian read file="Note Name"         # 고유한 이름인 경우
+
+# 수정
+obsidian append path="note.md" content="추가 내용"
+obsidian property:set path="note.md" name="status" value="completed"
+
+# vault 상태 확인
+obsidian orphans        # 연결 없는 노트
+obsidian unresolved     # 깨진 링크
+obsidian plugins:enabled  # 활성화된 플러그인 목록
+```
+
+## Obsidian 파일 작성 규칙
+
+### Frontmatter 권장
 
 ```yaml
 ---
@@ -31,33 +50,17 @@ tags: []
 ---
 ```
 
-## Obsidian CLI 사용 규칙
+### 내부 링크 우선
 
-### ⚠️ 코드블록 content= 제한
-
-`obsidian create content="..."` 에 백틱(` ``` `)이 포함되면 bash 오류 발생.
-
-```bash
-# ❌ 실패
-obsidian create path="note.md" content="# 제목\n\`\`\`bash\necho hi\n\`\`\`"
-
-# ✅ 정답: Write Tool로 직접 파일 작성
-# Obsidian file watcher가 자동 감지·인덱싱함
-```
-
-### CLI 기본 패턴
-
-```bash
-obsidian read path="folder/note.md"
-obsidian append path="note.md" content="추가 내용"
-obsidian property:set path="note.md" name="status" value="completed"
-obsidian orphans          # 연결 없는 노트
-obsidian unresolved       # 깨진 링크
-```
+- 복사 대신 항상 `[[링크]]` / `![[임베드]]` 사용
+- 원본 파일이 단일 진실 공급원(Single Source of Truth)
 
 ## 자동 셋업 시스템
 
 새 환경에서 vault 셋업이 필요하면:
 
-- **Cursor**: "옵시디언 셋업해줘" → `obsidian-vault-setup` 스킬 자동 로드
+- **Cursor**: "옵시디언 셋업해줘" / "set up my vault"
+  → `obsidian-vault-setup` 스킬 자동 활성화
 - **Claude Code**: `/project:vault-setup` 입력
+
+설정 파일: `.cursor/skills/obsidian-vault-setup/SETUP-GUIDE.md`

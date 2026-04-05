@@ -94,13 +94,3 @@
 |---|---|---|
 | `obsidian42-brat` | BRAT | 깃허브에서 베타 플러그인 직접 설치·관리 |
 | `claudian` | Claudian | Obsidian 내에서 Claude AI 직접 사용 |
-
----
-
-## ➕ 카탈로그 커스터마이징
-
-이 파일을 수정해서 자신만의 플러그인 목록을 만들 수 있습니다:
-
-1. 원하는 플러그인을 위 카테고리에 추가하거나 새 카테고리 생성
-2. `vault-snapshot.md`의 플러그인 목록도 함께 업데이트
-3. `scripts/phase2-cli.sh`에 `install_plugin "플러그인-id" "이름"` 줄 추가
